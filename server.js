@@ -1,30 +1,34 @@
 import http from 'http';
-import fs from 'fs/promises'
+import fs from 'fs/promises';
 import url from 'url';
 import path from 'path';
+
 const PORT = process.env.PORT || 8000;
 
-//Get current path
+// Get current path
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-console.log(__filename,__dirname)
+console.log(__filename, __dirname);
 
-const server = http.createServer(async(req, res) => {
+const server = http.createServer(async (req, res) => {
+    console.log("{{{{{PPPPP")
     try {
         // Check if GET request
         if (req.method === 'GET') {
             let filepath;
-        
+
             if (req.url === '/') {
-                filepath = path.join(__dirname, 'index.html');
-              
+               
+                filepath = path.join(__dirname, 'public', 'index.html');
+                console.log("[][][] filepath",filepath)
             } else if (req.url === '/about') {
-                filepath = path.join(__dirname, 'about.html');
+                filepath = path.join(__dirname, 'public','about.html');
             } else {
-              throw new Error('Not Found')
+                throw new Error('Not Found');
             }
-            const data = await fs.readFile(filePath);
+
+            const data = await fs.readFile(filepath);
             res.setHeader('Content-Type', 'text/html');
             res.write(data);
             res.end();
