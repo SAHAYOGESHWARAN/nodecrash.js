@@ -4,7 +4,8 @@ const PORT = 8000;
 const server = http.createServer((req, res) => {
     //res.setHeader('Content-Type', 'text/html');
     //res.statusCode =404;
-    res.end('<h1>Hello World</h1>');
+    res.writeHead(500, {'Content-Type': 'text/json'});
+    res.end(JSON.stringify({messsage:'Server Error'}));
 });
 
 server.listen(PORT, () => {
