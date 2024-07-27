@@ -9,5 +9,5 @@ function celciusToFahrenhei(celcius){
 
 module.exports = {
 generateRandomNumber,
-celciusToFahrenhei;
+celciusToFahrenhei
 };
