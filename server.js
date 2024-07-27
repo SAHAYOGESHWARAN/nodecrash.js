@@ -1,5 +1,10 @@
 import http from 'http';
+import fs from 'fs/promises'
 const PORT = process.env.PORT || 8000;
+
+//Get current path
+__filename
+__dirname
 
 const server = http.createServer((req, res) => {
     try {
